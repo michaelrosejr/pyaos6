@@ -1,0 +1,5 @@
+Paramiko >= 1.13+
+scp >= 0.10.0
+pyyaml
+matplotlib
+pytest
