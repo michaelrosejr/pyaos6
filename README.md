@@ -1,6 +1,6 @@
 
 
-Netmiko
+pyaos6
 =======
 
 A simple script to query the Aruba OS 6.x controllers
