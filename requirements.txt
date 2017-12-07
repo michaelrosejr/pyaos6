@@ -1,5 +1,6 @@
-Paramiko >= 1.13+
-scp >= 0.10.0
-pyyaml
-matplotlib
-pytest
+paramiko (2.4.0)
+pip (9.0.1)
+scp (0.10.2)
+netmiko
+random
+json

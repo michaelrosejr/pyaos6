@@ -15,9 +15,9 @@ hp_procurve = {
 
 aruba_os = {
     'device_type': 'aruba_os',
-    'ip': '10.0.1.88',
-    'username': 'admin',
-    'password': 'Aruba123',
+    'ip': '192.168.10.20',
+    'username': 'mrose',
+    'password': 'aruba123',
     'port': 22,
     'verbose': False,
 }
@@ -82,5 +82,30 @@ def show_dhcp_stats():
             dhcp['free'] = columns[5]
             print(json.dumps(dhcp))
 
+
+def get_user_ap_diff():
+    net_connect = ConnectHandler(**aruba_os)
+
+    show_ap_assoc= "show ap association | include Num"
+    show_usertable="show user-table | include Entries"
+    ap_assoc_num_clients = net_connect.send_command(show_ap_assoc)[:-1]
+    user_table_count = net_connect.send_command(show_usertable)
+    user_table_count = user_table_count[1:-1]
+
+    print("show ap association command: ", show_ap_assoc)
+    # print("response: ", ap_assoc_num_clients)
+    print("user-table command: ", show_usertable)
+    # print("response: ", user_table_count)
+
+    usertable = user_table_count.split(":")
+    #
+    # May need to use usertable[0] instead of 1 based on n/n clients. Do you want connected or total?
+    #
+    usertable_count = usertable[1].split("/")
+    print("Number of users in table: ", usertable_count[1])
+
+    showap_count = ap_assoc_num_clients.split(":")
+    print("Number of client associated to APs: ", showap_count[1])
+
 if __name__ == "__main__":
-    show_dhcp_stats()
+    get_user_ap_diff()
