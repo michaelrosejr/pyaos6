@@ -15,9 +15,9 @@ hp_procurve = {
 
 aruba_os = {
     'device_type': 'aruba_os',
-    'ip': '192.168.10.20',
-    'username': 'mrose',
-    'password': 'aruba123',
+    'ip': '10.0.1.5',
+    'username': 'admin',
+    'password': 'Aruba123',
     'port': 22,
     'verbose': False,
 }
